@@ -2,7 +2,7 @@ import "./style.css";
 
 (async () => {
   const browser = chrome || browser;
-  const { settings } = await browser.storage.sync.get("settings");
+  const settings = (await browser.storage.sync.get("settings")).settings || {};
   const isActive =
     typeof settings.active !== "undefined" ? settings.active : true;
 

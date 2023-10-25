@@ -1,7 +1,7 @@
 const browser = chrome || browser;
 
 (async () => {
-  const { settings } = await browser.storage.sync.get("settings");
+  const settings = (await browser.storage.sync.get("settings")).settings || {};
   const isActive =
     typeof settings.active !== "undefined" ? settings.active : true;
   const pattern = /\/assets\/ethereum\/(0x[a-fA-F0-9]+)\/\d+/;
