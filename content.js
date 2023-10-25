@@ -1,7 +1,12 @@
+const browser = chrome || browser;
+
+const { settings } = await browser.storage.sync.get("settings");
+const isActive =
+  typeof settings.active !== "undefined" ? settings.active : true;
 const pattern = /\/assets\/ethereum\/(0x[a-fA-F0-9]+)\/\d+/;
 
 const config = {
-  active: true,
+  active: isActive,
   current: { button: null },
   button: {
     style: [
@@ -28,12 +33,6 @@ const config = {
 function validateLink(link) {
   const matches = link.match(pattern);
   if (matches) return true;
-  // if (matches) {
-  //   const ethAddress = matches[1];
-  //   if (ethAddressPattern.test(ethAddress)) {
-  //     return ethAddress;
-  //   }
-  // }
 
   return null;
 }
@@ -57,7 +56,7 @@ function makeSaveButton() {
 }
 
 function over(e) {
-  if (config.current.button) return;
+  if (!isActive || config.current.button) return;
   const el = e.target;
   const link = el.closest("a");
   if (!link) return;

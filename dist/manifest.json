@@ -1,6 +1,8 @@
 {
   "manifest_version": 3,
-  "permissions": [],
+  "permissions": [
+    "storage"
+  ],
   "name": "Squid - Buy Button",
   "description": "Buy NFTs with Squid",
   "version": "1.0",

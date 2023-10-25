@@ -21,7 +21,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 240px;
   min-height: 100vh;
   background-color: var(--color-yellow);
 }
@@ -121,4 +121,10 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.new-tab {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
