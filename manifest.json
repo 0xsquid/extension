@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "permissions": [],
-  "name": "Hello Extensions",
-  "description": "Base Level Extension",
+  "name": "Squid - Buy Button",
+  "description": "Buy NFTs with Squid",
   "version": "1.0",
   "action": {
     "default_popup": "index.html"

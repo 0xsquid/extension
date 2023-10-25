@@ -1,6 +1,7 @@
 const pattern = /\/assets\/ethereum\/(0x[a-fA-F0-9]+)\/\d+/;
 
 const config = {
+  active: true,
   current: { button: null },
   button: {
     style: [
