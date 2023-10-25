@@ -1,45 +1,46 @@
 const browser = chrome || browser;
 
-const { settings } = await browser.storage.sync.get("settings");
-const isActive =
-  typeof settings.active !== "undefined" ? settings.active : true;
-const pattern = /\/assets\/ethereum\/(0x[a-fA-F0-9]+)\/\d+/;
+(async () => {
+  const { settings } = await browser.storage.sync.get("settings");
+  const isActive =
+    typeof settings.active !== "undefined" ? settings.active : true;
+  const pattern = /\/assets\/ethereum\/(0x[a-fA-F0-9]+)\/\d+/;
 
-const config = {
-  active: isActive,
-  current: { button: null },
-  button: {
-    style: [
-      "display: flex",
-      "align-items: center",
-      "gap: 5px",
-      "margin: 8px",
-      "right: 0px",
-      "height: 30px",
-      "padding: 5px 7px 5px 5px",
-      "color: rgb(0,0,0)",
-      "background: rgb(230, 250, 54)",
-      "position: absolute",
-      "opacity: 1",
-      "z-index: 8675309",
-      "cursor: pointer",
-      "border-radius: 15px",
-      `font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji"`,
-      "font-weight: 500",
-    ],
-  },
-};
+  const config = {
+    active: isActive,
+    current: { button: null },
+    button: {
+      style: [
+        "display: flex",
+        "align-items: center",
+        "gap: 5px",
+        "margin: 8px",
+        "right: 0px",
+        "height: 30px",
+        "padding: 5px 7px 5px 5px",
+        "color: rgb(0,0,0)",
+        "background: rgb(230, 250, 54)",
+        "position: absolute",
+        "opacity: 1",
+        "z-index: 8675309",
+        "cursor: pointer",
+        "border-radius: 15px",
+        `font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji"`,
+        "font-weight: 500",
+      ],
+    },
+  };
 
-function validateLink(link) {
-  const matches = link.match(pattern);
-  if (matches) return true;
+  function validateLink(link) {
+    const matches = link.match(pattern);
+    if (matches) return true;
 
-  return null;
-}
+    return null;
+  }
 
-function makeSaveButton() {
-  const el = document.createElement("a");
-  el.innerHTML = `
+  function makeSaveButton() {
+    const el = document.createElement("a");
+    el.innerHTML = `
       <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1718 1718"
@@ -49,36 +50,39 @@ function makeSaveButton() {
       </svg>
       <span>Buy</span>
   `;
-  el.setAttribute("class", "squid-extension-buy-button");
-  el.setAttribute("href", "https://squid-checkout-widget.vercel.app/");
-  el.setAttribute("style", config.button.style.join("!important;"));
-  return el;
-}
+    el.setAttribute("class", "squid-extension-buy-button");
+    el.setAttribute("href", "https://squid-checkout-widget.vercel.app/");
+    el.setAttribute("style", config.button.style.join("!important;"));
+    return el;
+  }
 
-function over(e) {
-  if (!isActive || config.current.button) return;
-  const el = e.target;
-  const link = el.closest("a");
-  if (!link) return;
-  const validatedLink = validateLink(link.href);
-  if (!validatedLink) return;
+  function over(e) {
+    if (!isActive || config.current.button) return;
+    const el = e.target;
+    const link = el.closest("a");
+    if (!link) return;
+    const validatedLink = validateLink(link.href);
+    if (!validatedLink) return;
 
-  document
-    .querySelectorAll(".squid-extension-buy-button")
-    .forEach((el) => el.remove());
+    document
+      .querySelectorAll(".squid-extension-buy-button")
+      .forEach((el) => el.remove());
 
-  const saveButton = makeSaveButton();
-  link.appendChild(saveButton);
-  config.current.button = saveButton;
+    const saveButton = makeSaveButton();
+    link.appendChild(saveButton);
+    config.current.button = saveButton;
 
-  saveButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    window.open("https://squid-checkout-widget.vercel.app/", "_blank").focus();
-  });
+    saveButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      window
+        .open("https://squid-checkout-widget.vercel.app/", "_blank")
+        .focus();
+    });
 
-  el.addEventListener("mouseleave", () => {
-    config.current.button = null;
-  });
-}
+    el.addEventListener("mouseleave", () => {
+      config.current.button = null;
+    });
+  }
 
-document.body.addEventListener("mouseover", over);
+  document.body.addEventListener("mouseover", over);
+})();
