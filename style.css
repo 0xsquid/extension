@@ -13,6 +13,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -47,7 +48,6 @@ main {
 
 .logo {
   height: 6em;
-  /* padding: 1.5em; */
   will-change: filter;
   transition: filter 300ms;
 }
@@ -60,7 +60,6 @@ main {
   padding: 2em;
 }
 
-/* The switch - the box around the slider */
 .switch {
   position: relative;
   display: inline-block;
@@ -68,14 +67,12 @@ main {
   height: 34px;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The slider */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -114,7 +111,6 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
