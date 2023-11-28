@@ -4,7 +4,8 @@ const browser = chrome || browser;
   const settings = (await browser.storage.sync.get("settings")).settings || {};
   const isActive =
     typeof settings.active !== "undefined" ? settings.active : true;
-  const pattern = /\/assets\/(\w+)\/(0x[a-fA-F0-9]+)\/\d+/;
+  const pattern =
+    /\/assets\/(ethereum|arbitrum|binance|polygon|optimism|linea|base)\/(0x[a-fA-F0-9]+)\/\d+/;
   const config = {
     active: isActive,
     current: { button: null },
