@@ -1,16 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Waiting for the extension service worker...</title>
-    <script src="/assets/precontroller-f5140eea.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/squid.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Squid - Buy Button</title>
+    <script type="module" crossorigin src="/assets/index.html-f6e96bd3.js"></script>
+    <link rel="stylesheet" href="/assets/index-bbe56ebe.css">
   </head>
   <body>
-    <h1>Waiting for service worker</h1>
-
-    <p>
-      If you see this message, it means the service worker has not loaded fully.
-    </p>
-
-    <p>This page is never added in production.</p>
+    <div id="app">
+      <main>
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+          target="_blank"
+        >
+          <img src="/squid.svg" class="logo" alt="JavaScript logo" />
+        </a>
+        <div class="button">
+          <span class="label">Show Buy button</span>
+          <label class="switch">
+            <input id="toggle" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="links">
+          <a href="https://squidrouter.com" rel="noreferrer" target="_blank"
+            >squidrouter.com</a
+          >
+          <a href="https://app.squidrouter.com" rel="noreferrer" target="_blank"
+            >app.squidrouter.com</a
+          >
+          <a
+            href="https://checkout.squidrouter.com"
+            rel="noreferrer"
+            target="_blank"
+            >checkout.squidrouter.com</a
+          >
+        </div>
+        <div class="socials">
+          <a href="https://twitter.com/squidrouter" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 31">
+              <path
+                d="M37.93,3.7c-1.42,.63-2.93,1.05-4.47,1.23,1.63-.98,2.84-2.52,3.43-4.33-1.5,.88-3.18,1.52-4.96,1.88-1.18-1.26-2.73-2.09-4.42-2.38-1.69-.28-3.43,0-4.95,.82-1.51,.82-2.72,2.1-3.43,3.67-.71,1.57-.88,3.33-.49,5.01C12.18,9.3,6.44,6.18,2.6,1.46c-.7,1.19-1.06,2.55-1.05,3.93,0,2.72,1.37,5.11,3.47,6.51-1.24-.04-2.44-.38-3.53-.98v.09c0,1.81,.62,3.55,1.76,4.95,1.14,1.4,2.73,2.36,4.49,2.72-1.15,.31-2.34,.35-3.5,.14,.5,1.55,1.47,2.92,2.78,3.88,1.31,.98,2.89,1.52,4.51,1.55-2.76,2.17-6.16,3.35-9.67,3.35-.62,0-1.24-.04-1.86-.11,3.57,2.29,7.73,3.52,11.96,3.51,14.34,0,22.16-11.92,22.16-22.22,0-.33,0-.67-.02-1,1.53-1.11,2.85-2.48,3.89-4.05l-.08-.03h0Z"
+              ></path>
+            </svg>
+          </a>
+          <a href="http://discord.gg/squidrouter" target="_blank"
+            ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 34">
+              <path
+                d="M38.09,2.82C35.23,1.52,32.15,.56,28.94,0c-.06-.01-.11,.02-.15,.07-.39,.7-.84,1.61-1.14,2.32-3.46-.51-6.9-.51-10.29,0-.3-.73-.76-1.63-1.16-2.32-.03-.05-.09-.08-.15-.07-3.21,.55-6.29,1.51-9.16,2.81-.03,.01-.04,.03-.06,.05C1,11.51-.6,19.93,.18,28.25c0,.04,.03,.08,.06,.11,3.85,2.8,7.58,4.5,11.24,5.63,.06,.02,.12,0,.16-.05,.87-1.17,1.64-2.41,2.3-3.71,.04-.08,0-.16-.08-.19-1.22-.46-2.39-1.02-3.51-1.66-.09-.05-.1-.18-.01-.24,.23-.18,.47-.36,.7-.54,.04-.03,.1-.04,.15-.02,7.37,3.33,15.34,3.33,22.62,0,.05-.03,.11-.02,.15,.02,.23,.18,.46,.37,.7,.54,.08,.06,.08,.19-.01,.24-1.12,.65-2.29,1.2-3.51,1.66-.08,.03-.11,.12-.08,.2,.68,1.3,1.45,2.53,2.29,3.71,.04,.05,.1,.07,.16,.05,3.68-1.12,7.4-2.83,11.26-5.63,.03-.03,.06-.06,.06-.1,.94-9.62-1.57-17.97-6.66-25.38-.01-.03-.03-.04-.06-.05h0ZM15.04,23.18c-2.22,0-4.04-2.02-4.04-4.5s1.79-4.5,4.04-4.5,4.08,2.03,4.04,4.5c0,2.47-1.79,4.5-4.04,4.5Zm14.95,0c-2.22,0-4.04-2.02-4.04-4.5s1.79-4.5,4.04-4.5,4.08,2.03,4.04,4.5c0,2.47-1.77,4.5-4.04,4.5Z"
+              ></path>
+            </svg>
+          </a>
+          <a
+            href="https://docs.squidrouter.com/"
+            target="_blank"
+            class="transition-colors hover:sm:text-white"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 17.29"
+              class="fill-current"
+            >
+              <path
+                d="M10.8,14.42c.39,0,.7,.32,.7,.7,0,.39-.32,.7-.7,.7s-.7-.32-.7-.7c0-.39,.32-.7,.7-.7h0m11.02-4.35c-.39,0-.7-.32-.7-.7,0-.39,.32-.7,.7-.7s.7,.32,.7,.7c0,.39-.32,.7-.7,.7m0-2.88c-1.2,0-2.17,.97-2.17,2.17,0,.23,.04,.47,.11,.69l-7.18,3.82c-.4-.59-1.07-.94-1.78-.94-.83,0-1.58,.48-1.95,1.22l-6.45-3.4c-.68-.36-1.19-1.48-1.14-2.5,.03-.53,.21-.95,.49-1.11,.18-.1,.39-.09,.62,.03l.04,.02c1.71,.9,7.3,3.85,7.54,3.96,.36,.17,.56,.24,1.18-.06l11.56-6.01c.17-.06,.37-.23,.37-.47,0-.34-.35-.48-.35-.48-.66-.32-1.67-.79-2.66-1.25C17.96,1.9,15.57,.78,14.52,.23c-.91-.47-1.64-.07-1.77,0l-.25,.12C7.78,2.69,1.46,5.82,1.1,6.04,.46,6.43,.06,7.22,0,8.18c-.08,1.54,.7,3.14,1.82,3.73l6.82,3.52c.16,1.07,1.07,1.86,2.15,1.86,1.19,0,2.15-.95,2.17-2.14l7.51-4.07c.38,.3,.85,.46,1.34,.46,1.2,0,2.17-.97,2.17-2.17,0-1.2-.97-2.17-2.17-2.17"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </main>
+    </div>
+    
   </body>
 </html>
