@@ -1,5 +1,6 @@
 :root {
   --color-black: #000;
+  --color-white: #fff;
   --color-yellow: #e6fa36;
   --color-purple: #bc8ee4;
   --color-purple-light: #c48cea;
@@ -9,13 +10,13 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
+  color: inherit;
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #535bf2;
+  color: inherit;
+  opacity: 0.7;
 }
 
 body {
@@ -24,7 +25,19 @@ body {
   place-items: center;
   min-width: 240px;
   min-height: 100vh;
-  background-color: var(--color-yellow);
+  overflow: hidden;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  width: 200vh;
+  height: 200vw;
+  transform: rotate(60deg);
+  background-image: url(/background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
 }
 
 h1 {
@@ -43,11 +56,12 @@ h1 {
 main {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 40px;
+  align-items: center;
 }
 
 .logo {
-  height: 6em;
+  height: 69px;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -123,4 +137,49 @@ input:checked + .slider:before {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.button {
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 11px 10px 30px;
+  border-radius: 48px;
+  box-shadow: 0.37279px 2.37279px 3.79647px 0.94912px rgba(0, 0, 0, 0.1);
+}
+
+.button .label {
+  font-family: Inter;
+  height: 38px;
+  font-size: 31.12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: -0.622px;
+}
+
+.links,
+.socials {
+  display: flex;
+  gap: 24px;
+}
+
+.links {
+  padding: 12px 0;
+}
+
+.links a {
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.socials a,
+.socials a svg {
+  width: 29px;
+  height: 29px;
 }
