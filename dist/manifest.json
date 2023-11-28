@@ -22,7 +22,7 @@
   "content_scripts": [
     {
       "js": [
-        "assets/content.js-loader-8ef4bd9f.js"
+        "assets/content.js-loader-6fd7d3b6.js"
       ],
       "matches": [
         "https://*.opensea.io/*"
@@ -35,7 +35,7 @@
         "https://*.opensea.io/*"
       ],
       "resources": [
-        "assets/content.js-d42262f8.js"
+        "assets/content.js-6437c6ef.js"
       ],
       "use_dynamic_url": true
     }
