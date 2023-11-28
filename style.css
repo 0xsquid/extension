@@ -12,6 +12,7 @@
 a {
   color: inherit;
   text-decoration: inherit;
+  transition: opacity 200ms ease-out;
 }
 
 a:hover {
@@ -23,8 +24,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 240px;
-  min-height: 100vh;
+  padding: 0px 32px;
   overflow: hidden;
 }
 

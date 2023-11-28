@@ -21,12 +21,13 @@ const browser = chrome || browser;
         "color: rgb(0,0,0)",
         "background: rgb(230, 250, 54)",
         "position: absolute",
-        "opacity: 1",
         "z-index: 8675309",
         "cursor: pointer",
         "border-radius: 15px",
         `font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji"`,
         "font-weight: 500",
+        "opacity: 0",
+        "transition: opacity 0.2s ease-in-out 0.015s",
       ],
     },
   };
@@ -52,8 +53,24 @@ const browser = chrome || browser;
   `;
     el.setAttribute("class", "squid-extension-buy-button");
     el.setAttribute("href", "https://squid-checkout-widget.vercel.app/");
-    el.setAttribute("style", config.button.style.join("!important;"));
+    el.setAttribute("style", config.button.style.join(" !important;"));
+    setTimeout(() => (el.style.opacity = 1), 100);
     return el;
+  }
+
+  function extractParamsFromURL(url) {
+    const pattern = /\/assets\/(\w+)\/(\w+)\/(\d+)/;
+    const matches = url.match(pattern);
+
+    if (matches) {
+      const chainName = matches[1];
+      const contract = matches[2];
+      const tokenId = matches[3];
+
+      return { chainName, contract, tokenId };
+    }
+
+    return null;
   }
 
   function over(e) {
@@ -63,6 +80,7 @@ const browser = chrome || browser;
     if (!link) return;
     const validatedLink = validateLink(link.href);
     if (!validatedLink) return;
+    const params = extractParamsFromURL(link.href);
 
     document
       .querySelectorAll(".squid-extension-buy-button")
@@ -75,12 +93,17 @@ const browser = chrome || browser;
     saveButton.addEventListener("click", (e) => {
       e.preventDefault();
       window
-        .open("https://squid-checkout-widget.vercel.app/", "_blank")
+        .open(
+          `https://checkout.squidrouter.com/collection/${params.chainName}/${params.contract}/${params.tokenId}`,
+          "_blank"
+        )
         .focus();
     });
 
-    el.addEventListener("mouseleave", () => {
+    link.addEventListener("mouseleave", (e) => {
       config.current.button = null;
+      saveButton.style.opacity = 0;
+      setTimeout(() => saveButton.remove(), 200);
     });
   }
 
