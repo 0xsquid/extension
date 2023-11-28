@@ -76,7 +76,10 @@ const browser = chrome || browser;
     if (!isActive || config.current.button) return;
     const el = e.target;
     const link = el.closest("a");
-    if (!link) return;
+    const button = el
+      .closest("article")
+      .querySelector("[data-testid=ItemCardPrice]");
+    if (!link || !button) return;
     const validatedLink = validateLink(link.href);
     if (!validatedLink) return;
     const params = extractParamsFromURL(link.href);

@@ -4,8 +4,7 @@ const browser = chrome || browser;
   const settings = (await browser.storage.sync.get("settings")).settings || {};
   const isActive =
     typeof settings.active !== "undefined" ? settings.active : true;
-  const pattern = /\/assets\/ethereum\/(0x[a-fA-F0-9]+)\/\d+/;
-
+  const pattern = /\/assets\/(\w+)\/(0x[a-fA-F0-9]+)\/\d+/;
   const config = {
     active: isActive,
     current: { button: null },
@@ -77,7 +76,10 @@ const browser = chrome || browser;
     if (!isActive || config.current.button) return;
     const el = e.target;
     const link = el.closest("a");
-    if (!link) return;
+    const button = el
+      .closest("article")
+      .querySelector("[data-testid=ItemCardPrice]");
+    if (!link || !button) return;
     const validatedLink = validateLink(link.href);
     if (!validatedLink) return;
     const params = extractParamsFromURL(link.href);
