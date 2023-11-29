@@ -52,7 +52,7 @@ const browser = chrome || browser;
       <span>Buy</span>
   `;
     el.setAttribute("class", "squid-extension-buy-button");
-    el.setAttribute("href", "https://squid-checkout-widget.vercel.app/");
+    el.setAttribute("href", "https://checkout.squidrouter.com");
     el.setAttribute("style", config.button.style.join(" !important;"));
     setTimeout(() => (el.style.opacity = 1), 100);
     return el;
