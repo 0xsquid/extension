@@ -31,13 +31,15 @@ body {
 body::after {
   content: "";
   position: absolute;
-  width: 200vh;
-  height: 200vw;
-  transform: rotate(60deg);
+  width: 200vw;
+  height: 200vh;
   background-image: url(/background.jpg);
   background-position: center;
   background-repeat: no-repeat;
   z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -70%);
 }
 
 h1 {
